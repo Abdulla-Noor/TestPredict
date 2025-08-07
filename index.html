@@ -270,7 +270,7 @@
         <div class="container">
             <h1>Predict Your Next Test</h1>
             <p>AI-powered study guides that analyze your teacher's patterns and predict what's most likely to be on your next exam</p>
-            <a href="#" class="cta-button" onclick="showInterest()">Join the Beta - Free!</a>
+            <a href="#signup-form" class="cta-button" onclick="showSignupForm()">Join the Beta - Free!</a>
         </div>
     </section>
 
@@ -350,12 +350,124 @@
         </div>
     </section>
 
+    <!-- Signup Form Modal -->
+    <div id="signup-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 3rem; border-radius: 20px; max-width: 500px; width: 90%; max-height: 90%; overflow-y: auto; position: relative;">
+            <button onclick="closeSignupForm()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">×</button>
+            
+            <h2 style="margin-bottom: 1.5rem; color: #333; text-align: center;">Join TestPredict Beta</h2>
+            
+            <form id="beta-signup-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">First Name *</label>
+                    <input type="text" name="first_name" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;" placeholder="Enter your first name">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Email Address *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;" placeholder="your.email@example.com">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">School Name *</label>
+                    <input type="text" name="school" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;" placeholder="Enter your school name">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Subject *</label>
+                    <select name="subject" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                        <option value="">Choose a subject</option>
+                        <optgroup label="Math">
+                            <option value="6th Grade Math">6th Grade Math</option>
+                            <option value="7th Grade Math">7th Grade Math</option>
+                            <option value="8th Grade Math">8th Grade Math</option>
+                            <option value="Pre-Algebra">Pre-Algebra</option>
+                            <option value="Algebra 1">Algebra 1</option>
+                            <option value="Geometry">Geometry</option>
+                            <option value="Algebra 2">Algebra 2</option>
+                            <option value="Pre-Calculus">Pre-Calculus</option>
+                            <option value="Calculus">Calculus</option>
+                            <option value="AP Calculus AB">AP Calculus AB</option>
+                            <option value="AP Calculus BC">AP Calculus BC</option>
+                        </optgroup>
+                        <optgroup label="Science">
+                            <option value="6th Grade Science">6th Grade Science</option>
+                            <option value="7th Grade Science">7th Grade Science</option>
+                            <option value="8th Grade Science">8th Grade Science</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Physics">Physics</option>
+                            <option value="AP Biology">AP Biology</option>
+                            <option value="AP Chemistry">AP Chemistry</option>
+                            <option value="AP Physics">AP Physics</option>
+                        </optgroup>
+                        <optgroup label="English">
+                            <option value="6th Grade English">6th Grade English</option>
+                            <option value="7th Grade English">7th Grade English</option>
+                            <option value="8th Grade English">8th Grade English</option>
+                            <option value="English 1">English 1</option>
+                            <option value="English 2">English 2</option>
+                            <option value="English 3">English 3</option>
+                            <option value="English 4">English 4</option>
+                            <option value="AP English Language">AP English Language</option>
+                            <option value="AP English Literature">AP English Literature</option>
+                        </optgroup>
+                        <optgroup label="Social Studies">
+                            <option value="6th Grade Social Studies">6th Grade Social Studies</option>
+                            <option value="7th Grade Social Studies">7th Grade Social Studies</option>
+                            <option value="8th Grade Social Studies">8th Grade Social Studies</option>
+                            <option value="World History">World History</option>
+                            <option value="US History">US History</option>
+                            <option value="Government">Government</option>
+                            <option value="AP World History">AP World History</option>
+                            <option value="AP US History">AP US History</option>
+                            <option value="AP Government">AP Government</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option value="Foreign Language">Foreign Language</option>
+                            <option value="Art">Art</option>
+                            <option value="Music">Music</option>
+                            <option value="PE/Health">PE/Health</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Other">Other</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Teacher's Name</label>
+                    <input type="text" name="teacher" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;" placeholder="Mr./Ms. Teacher Name (optional)">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Tell us about your next test</label>
+                    <textarea name="test-details" rows="3" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; resize: vertical;" placeholder="When is your next test? What topics might be covered? Any other details..."></textarea>
+                </div>
+                
+                <div style="margin: 1rem 0;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" name="agree" required style="transform: scale(1.2);">
+                        <span style="font-size: 0.9rem; color: #666;">I agree to participate in the TestPredict beta program and provide feedback.</span>
+                    </label>
+                </div>
+                
+                <button type="submit" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; padding: 15px 30px; font-size: 1.1rem; border: none; border-radius: 50px; cursor: pointer; margin-top: 1rem; transition: transform 0.3s;">
+                    Join Beta Program
+                </button>
+                
+                <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 1rem;">
+                    We'll contact you within 24 hours to get started!
+                </p>
+            </form>
+        </div>
+    </div>
+
     <footer id="contact">
         <div class="container">
             <h3>Ready to Transform Your Grades?</h3>
             <p>Join our beta program and be among the first to experience AI-powered test prediction.</p>
             <br>
-            <a href="#" class="cta-button" onclick="showInterest()">Sign Up for Beta Access</a>
+            <a href="#signup-form" class="cta-button" onclick="showSignupForm()">Sign Up for Beta Access</a>
             <br><br>
             <p>Contact us: info@testpredict.com | Built by a student, for students</p>
             <p>&copy; 2025 TestPredict. All rights reserved.</p>
@@ -363,9 +475,25 @@
     </footer>
 
     <script>
-        function showInterest() {
-            alert("Thanks for your interest! Please email info@testpredict.com with your school name, grade level, and one subject you'd like to try this with. We'll get back to you within 24 hours!");
+        function showSignupForm() {
+            document.getElementById('signup-modal').style.display = 'flex';
         }
+
+        function closeSignupForm() {
+            document.getElementById('signup-modal').style.display = 'none';
+        }
+
+        function showInterest() {
+            showSignupForm();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('signup-modal');
+            if (e.target === modal) {
+                closeSignupForm();
+            }
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
